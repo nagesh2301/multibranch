@@ -24,38 +24,7 @@ pipeline
 		}
             }
         }
-        stage('ContinuousDeployment_master')
-        {
-            steps
-            {
-	    	script
-	    	{
-	    		multi.newDeploy("${env.WORKSPACE}","172.31.85.255","testapp4")
-	    	}
-            }
-        }
-        stage('ContinuousTesting_master')
-        {
-            steps
-            {
-	    	script
-		{
-			multi.newGit("https://github.com/intelliqittrainings/FunctionalTesting.git")
-			multi.newTesting("${env.WORKSPACE}")
-		}
-	    }
-        }
-	stage('ContinuousDelivery_master')
-	{
-		steps
-		{
-			script
-			{
-				multi.newDeploy("${env.WORKSPACE}","172.31.94.84","prodapp4")
-			}
-		}
-	}
-       
-    }
-}
+        
+     }
+ }
        
